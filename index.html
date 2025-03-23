@@ -7,67 +7,70 @@
   <style>
     /* General Styles */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
       height: 100vh;
       background: linear-gradient(135deg, #1e3c72, #2a5298);
-      overflow: hidden;
-      color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      color: white;
+      transition: background 0.5s ease-in-out;
     }
 
-    /* Central container (lighter blue box) */
+    /* Light Mode */
+    body.light-mode {
+      background: linear-gradient(135deg, #f9f9f9, #ffffff);
+      color: black;
+    }
+
+    /* Container */
     .container {
       position: relative;
-      background: rgba(173, 216, 230, 0.8); /* light blue */
+      background: rgba(255, 255, 255, 0.15);
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
       text-align: center;
       z-index: 10;
       max-width: 500px;
+      backdrop-filter: blur(8px);
+      transition: background 0.5s ease-in-out;
+    }
+
+    body.light-mode .container {
+      background: rgba(0, 0, 0, 0.1);
     }
 
     /* Floating boxes */
     .floating-box {
       position: absolute;
-      background: rgba(0, 0, 255, 0.3);
-      backdrop-filter: blur(6px);
+      background: rgba(255, 255, 255, 0.2);
       padding: 20px;
       border-radius: 8px;
-      max-width: 300px;
       text-align: center;
-      font-size: 20px;
+      font-size: 18px;
       line-height: 1.5;
-      z-index: 5;
+      backdrop-filter: blur(10px);
+      animation: float 4s infinite ease-in-out alternate;
     }
 
-    /* Positioning for each box */
-    #box1 {
-      top: 50%; /* On the left side of the container */
-      left: 0;
-      transform: translateY(-50%);
+    /* Floating effect */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(15px); }
     }
 
-    #box2 {
-      top: 50%; /* On the right side of the container */
-      right: 0;
-      transform: translateY(-50%);
-    }
-
-    #box3 {
-      bottom: -50px; /* Positioned below the container */
-      left: 50%;
-      transform: translateX(-50%);
-    }
+    /* Positions */
+    #box1 { top: 20%; left: 10%; animation-delay: 0.5s; }
+    #box2 { top: 30%; right: 10%; animation-delay: 1s; }
+    #box3 { bottom: 20%; left: 50%; transform: translateX(-50%); animation-delay: 1.5s; }
 
     /* Title */
     h1 {
-      font-size: 32px;
+      font-size: 34px;
       margin-bottom: 10px;
     }
 
@@ -77,36 +80,87 @@
       margin-bottom: 20px;
     }
 
-    /* Button Styling */
-    .talk-button {
+    /* Buttons */
+    .btn {
       display: inline-block;
       padding: 12px 24px;
       font-size: 18px;
       font-weight: bold;
       color: white;
       background: #ff9800;
-      text-decoration: none;
+      border: none;
       border-radius: 8px;
+      cursor: pointer;
       transition: transform 0.3s ease, background 0.3s ease;
+      outline: none;
     }
 
-    .talk-button:hover {
+    .btn:hover {
       background: #e68900;
       transform: scale(1.1);
+    }
+
+    /* Dark mode button */
+    .toggle-mode {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      color: white;
+      border: 2px solid white;
+      padding: 10px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    body.light-mode .toggle-mode {
+      color: black;
+      border-color: black;
+    }
+
+    .toggle-mode:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Quote box */
+    .quote-box {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 18px;
+      font-style: italic;
+      margin-top: 20px;
+      transition: all 0.5s ease-in-out;
+    }
+
+    body.light-mode .quote-box {
+      background: rgba(0, 0, 0, 0.1);
     }
   </style>
 </head>
 <body>
-  <!-- Central container (lighter blue box) -->
-  <div class="container" id="centerBox">
+  <!-- Dark Mode Toggle -->
+  <button class="toggle-mode" onclick="toggleMode()">☀️</button>
+
+  <!-- Main Container -->
+  <div class="container">
     <h1>The Baha'i Teachings</h1>
     <p>Engage with the AI assistant to explore the teachings of the Baha'i Faith.</p>
     <a href="https://elevenlabs.io/app/talk-to?agent_id=ej1v4kQf9iSHw7bb3ovQ" 
        target="_blank" 
        rel="noopener noreferrer"
-       class="talk-button">
+       class="btn">
       Talk to the AI
     </a>
+
+    <!-- Dynamic Quotes -->
+    <div class="quote-box" id="quoteBox">
+      "The earth is but one country and mankind its citizens." - Baha'u'llah
+    </div>
+    <button class="btn" style="margin-top: 10px;" onclick="newQuote()">Get a New Quote</button>
   </div>
 
   <!-- Floating text boxes -->
@@ -115,15 +169,38 @@
   </div>
   <div class="floating-box" id="box2">
     <p>Independent investigation of truth</p>
-    <p>Religion must be the cause of unity</p>
   </div>
   <div class="floating-box" id="box3">
-    <p>"The earth is but one country and mankind its citizens" - Baha'u'llah</p>
+    <p>Religion must be the cause of unity</p>
   </div>
 
+  <!-- JavaScript -->
   <script>
-    // You no longer need JavaScript to animate the boxes; the positions are fixed in CSS.
+    // Toggle Dark/Light Mode
+    function toggleMode() {
+      document.body.classList.toggle("light-mode");
+      const button = document.querySelector(".toggle-mode");
+      if (document.body.classList.contains("light-mode")) {
+        button.textContent = "🌙";
+      } else {
+        button.textContent = "☀️";
+      }
+    }
+
+    // Dynamic Quotes
+    const quotes = [
+      "The best beloved of all things in My sight is justice. - Baha'u'llah",
+      "Let your vision be world embracing. - Baha'u'llah",
+      "So powerful is the light of unity that it can illuminate the whole earth. - Baha'u'llah",
+      "Service to humanity is service to God. - Abdul-Baha",
+      "The essence of faith is fewness of words and abundance of deeds. - Baha'u'llah"
+    ];
+
+    function newQuote() {
+      const quoteBox = document.getElementById("quoteBox");
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      quoteBox.innerHTML = quotes[randomIndex];
+    }
   </script>
 </body>
 </html>
-
