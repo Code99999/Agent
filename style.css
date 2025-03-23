@@ -6,16 +6,16 @@ body {
   height: 100vh;
   background: linear-gradient(135deg, #1e3c72, #2a5298);
   overflow: hidden;
-  position: relative; /* Ensure absolutely positioned elements are within the body */
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* Central container (lighter blue box) */
 .container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   background: rgba(173, 216, 230, 0.8); /* light blue */
   padding: 30px;
   border-radius: 12px;
@@ -39,7 +39,52 @@ body {
   z-index: 5;
 }
 
-/* You can add a subtle box-shadow for depth */
-.floating-box p {
-  margin: 10px 0;
+/* Positioning for each box */
+#box1 {
+  top: 50%; /* On the left side of the container */
+  left: 0;
+  transform: translateY(-50%);
 }
+
+#box2 {
+  top: 50%; /* On the right side of the container */
+  right: 0;
+  transform: translateY(-50%);
+}
+
+#box3 {
+  bottom: -50px; /* Positioned below the container */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Title */
+h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+/* Paragraph */
+p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Button Styling */
+.talk-button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background: #ff9800;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.talk-button:hover {
+  background: #e68900;
+  transform: scale(1.1);
+}
+
