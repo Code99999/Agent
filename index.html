@@ -26,11 +26,11 @@
       color: black;
     }
 
-    /* Container */
+    /* Main Container */
     .container {
       position: relative;
       background: rgba(255, 255, 255, 0.15);
-      padding: 30px;
+      padding: 40px;
       border-radius: 12px;
       box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
       text-align: center;
@@ -55,18 +55,20 @@
       line-height: 1.5;
       backdrop-filter: blur(10px);
       animation: float 4s infinite ease-in-out alternate;
+      z-index: 5;
+      pointer-events: none;
     }
 
-    /* Floating effect */
+    /* Floating Animation */
     @keyframes float {
       0% { transform: translateY(0px); }
       100% { transform: translateY(15px); }
     }
 
-    /* Positions */
-    #box1 { top: 20%; left: 10%; animation-delay: 0.5s; }
-    #box2 { top: 30%; right: 10%; animation-delay: 1s; }
-    #box3 { bottom: 20%; left: 50%; transform: translateX(-50%); animation-delay: 1.5s; }
+    /* Safe positioning of floating boxes */
+    #box1 { top: 15%; left: 5%; animation-delay: 0.5s; }
+    #box2 { top: 35%; right: 5%; animation-delay: 1s; }
+    #box3 { bottom: 15%; left: 50%; transform: translateX(-50%); animation-delay: 1.5s; }
 
     /* Title */
     h1 {
@@ -100,7 +102,7 @@
       transform: scale(1.1);
     }
 
-    /* Dark mode button */
+    /* Dark Mode Button */
     .toggle-mode {
       position: absolute;
       top: 20px;
@@ -124,7 +126,7 @@
       background: rgba(255, 255, 255, 0.2);
     }
 
-    /* Quote box */
+    /* Quote Box */
     .quote-box {
       background: rgba(255, 255, 255, 0.2);
       padding: 20px;
@@ -180,20 +182,25 @@
     function toggleMode() {
       document.body.classList.toggle("light-mode");
       const button = document.querySelector(".toggle-mode");
-      if (document.body.classList.contains("light-mode")) {
-        button.textContent = "🌙";
-      } else {
-        button.textContent = "☀️";
-      }
+      button.textContent = document.body.classList.contains("light-mode") ? "🌙" : "☀️";
     }
 
     // Dynamic Quotes
     const quotes = [
+      "The earth is but one country and mankind its citizens. - Baha'u'llah",
       "The best beloved of all things in My sight is justice. - Baha'u'llah",
       "Let your vision be world embracing. - Baha'u'llah",
       "So powerful is the light of unity that it can illuminate the whole earth. - Baha'u'llah",
       "Service to humanity is service to God. - Abdul-Baha",
-      "The essence of faith is fewness of words and abundance of deeds. - Baha'u'llah"
+      "The essence of faith is fewness of words and abundance of deeds. - Baha'u'llah",
+      "The oneness of the world of humanity.",
+      "The foundation of all religion is one.",
+      "Religion must be the cause of unity.",
+      "Harmony of science and religion.",
+      "Independent investigation of truth.",
+      "To eliminate all forms of prejudice.",
+      "Universal peace.",
+      "Universal education."
     ];
 
     function newQuote() {
