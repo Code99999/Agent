@@ -44,32 +44,6 @@
       background: rgba(0, 0, 0, 0.1);
     }
 
-    /* Floating boxes */
-    .floating-box {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.2);
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-      font-size: 18px;
-      line-height: 1.5;
-      backdrop-filter: blur(10px);
-      animation: float 4s infinite ease-in-out alternate;
-      z-index: 5;
-      pointer-events: none;
-    }
-
-    /* Floating Animation */
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      100% { transform: translateY(15px); }
-    }
-
-    /* Safe positioning of floating boxes */
-    #box1 { top: 15%; left: 5%; animation-delay: 0.5s; }
-    #box2 { top: 35%; right: 5%; animation-delay: 1s; }
-    #box3 { bottom: 15%; left: 50%; transform: translateX(-50%); animation-delay: 1.5s; }
-
     /* Title */
     h1 {
       font-size: 34px;
@@ -149,6 +123,14 @@
       right: 20px;
       z-index: 100;
     }
+
+    /* Styling for AI Message */
+    .ai-message {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
   </style>
 </head>
 <body>
@@ -159,6 +141,12 @@
   <div class="container">
     <h1>The Baha'i Teachings</h1>
     <p>Engage with the AI assistant to explore the teachings of the Baha'i Faith.</p>
+    
+    <!-- AI Agent Introduction -->
+    <div class="ai-message">
+      This AI agent will teach you about the Baha'i Faith
+    </div>
+
     <a href="https://elevenlabs.io/app/talk-to?agent_id=ej1v4kQf9iSHw7bb3ovQ" 
        target="_blank" 
        rel="noopener noreferrer"
@@ -171,17 +159,6 @@
       "The earth is but one country and mankind its citizens." - Baha'u'llah
     </div>
     <button class="btn" style="margin-top: 10px;" onclick="newQuote()">Get a New Quote</button>
-  </div>
-
-  <!-- Floating text boxes -->
-  <div class="floating-box" id="box1">
-    <p>Harmony of science and religion</p>
-  </div>
-  <div class="floating-box" id="box2">
-    <p>Independent investigation of truth</p>
-  </div>
-  <div class="floating-box" id="box3">
-    <p>Religion must be the cause of unity</p>
   </div>
 
   <!-- Eleven Labs Widget (Embed) -->
@@ -225,6 +202,7 @@
   </script>
 </body>
 </html>
+
 
 
 
