@@ -81,17 +81,20 @@ p {
     position: absolute;
     top: 20%;
     right: 10px;
-    background-color: rgba(0, 0, 0, 0.4);
-    padding: 20px;
-    border-radius: 8px;
+    background-color: rgba(0, 0, 255, 0.4); /* Blue with transparency */
+    padding: 30px;
+    border-radius: 12px;
     color: #fff;
     font-style: italic;
-    max-width: 300px;
+    font-size: 24px; /* Increase size */
+    line-height: 1.8;
+    max-width: 350px;
     z-index: 2;
+    backdrop-filter: blur(10px); /* Blurred background */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Optional shadow for extra depth */
 }
 
 blockquote {
-    margin: 10px 0;
-    font-size: 18px;
-    line-height: 1.5;
+    margin: 15px 0;
+    font-size: 20px; /* Increase size for quotes */
 }
