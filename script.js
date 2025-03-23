@@ -2,24 +2,24 @@
 const boxes = [
   {
     el: document.getElementById("box1"),
-    x: Math.random() * window.innerWidth,
-    y: Math.random() * window.innerHeight,
-    vx: (Math.random() - 0.5) * 0.5, // slow velocity
-    vy: (Math.random() - 0.5) * 0.5
+    x: Math.random() * (window.innerWidth - 300), // Adjusted for box width
+    y: Math.random() * (window.innerHeight - 100), // Adjusted for box height
+    vx: (Math.random() - 0.5) * 1.5, // Increased velocity
+    vy: (Math.random() - 0.5) * 1.5
   },
   {
     el: document.getElementById("box2"),
-    x: Math.random() * window.innerWidth,
-    y: Math.random() * window.innerHeight,
-    vx: (Math.random() - 0.5) * 0.5,
-    vy: (Math.random() - 0.5) * 0.5
+    x: Math.random() * (window.innerWidth - 300),
+    y: Math.random() * (window.innerHeight - 100),
+    vx: (Math.random() - 0.5) * 1.5,
+    vy: (Math.random() - 0.5) * 1.5
   },
   {
     el: document.getElementById("box3"),
-    x: Math.random() * window.innerWidth,
-    y: Math.random() * window.innerHeight,
-    vx: (Math.random() - 0.5) * 0.5,
-    vy: (Math.random() - 0.5) * 0.5
+    x: Math.random() * (window.innerWidth - 300),
+    y: Math.random() * (window.innerHeight - 100),
+    vx: (Math.random() - 0.5) * 1.5,
+    vy: (Math.random() - 0.5) * 1.5
   }
 ];
 
@@ -82,4 +82,3 @@ window.addEventListener("resize", () => {
     box.y = Math.min(box.y, window.innerHeight - box.el.offsetHeight);
   });
 });
-
