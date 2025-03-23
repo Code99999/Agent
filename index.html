@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Baha'i Teachings</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Baha'i Teachings</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>The Baha'i Teachings</h1>
-        <p>Engage with the AI assistant to explore the teachings of the Baha'i Faith.</p>
+  <!-- Central container (lighter blue box) -->
+  <div class="container" id="centerBox">
+    <h1>The Baha'i Teachings</h1>
+    <p>Engage with the AI assistant to explore the teachings of the Baha'i Faith.</p>
+    <a href="https://elevenlabs.io/app/talk-to?agent_id=ej1v4kQf9iSHw7bb3ovQ" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="talk-button">
+      Talk to the AI
+    </a>
+  </div>
 
-        <a href="https://elevenlabs.io/app/talk-to?agent_id=ej1v4kQf9iSHw7bb3ovQ" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           class="talk-button">
-            Talk to the AI
-        </a>
-    </div>
+  <!-- Floating text boxes -->
+  <div class="floating-box" id="box1">
+    <p>Harmony of science and religion</p>
+  </div>
+  <div class="floating-box" id="box2">
+    <p>Independent investigation of truth</p>
+    <p>Religion must be the cause of unity</p>
+  </div>
+  <div class="floating-box" id="box3">
+    <p>"The earth is but one country and mankind its citizens" - Baha'u'llah</p>
+  </div>
 
-    <div class="quotes">
-        <blockquote>
-            "So powerful is the light of unity that it can illuminate the whole earth."
-        </blockquote>
-        <blockquote>
-            "The Word of God hath set the heart of the world afire; how regrettable if ye fail to be enkindled with its flame!"
-        </blockquote>
-    </div>
-
-    <div class="background-animation"></div>
+  <script src="script.js"></script>
 </body>
 </html>
